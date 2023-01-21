@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Result</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Search Remoteok result for {{keyword}}: </h1>
+    <table>
+      <thead>
+        <tr>
+          <th>제목</th>
+          <th>회사명</th>
+          <th>지역</th>
+          <th>봉급</th>
+          <th>태그</th>
+          <th>작성시간</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in OKJobs %}
+        <tr>
+          <td><a href={{job.get('link')}}>{{job.get('title')}}</a></td>
+          <td><a href={{job.get('companyLink')}}>{{job.get('company')}}</a></td>
+          <td>{{job.get('location')}}</td>
+          <td>{{job.get('salary')}}</td>  
+          <td>{{job.get('tag')}}</td>
+          <td>{{job.get('time')}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table><br>
+    <h1>Search WeWorkRemotely result for {{keyword}}: </h1>
+    <table>
+      <thead>
+        <tr>
+          <th>제목</th>
+          <th>회사명</th>
+          <th>근무시간</th>
+          <th>지역</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for job in WWJobs %}
+        <tr>
+          <td><a href={{job.get('link')}}>{{job.get('title')}}</a></td>
+          <td><a href={{job.get('companyLink')}}>{{job.get('company')}}</a></td>
+          <td>{{job.get('workingHour')}}</td>
+          <td>{{job.get('location')}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
